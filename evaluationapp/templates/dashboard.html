@@ -1,0 +1,42 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+<!-- Section: Design Block -->
+<div class="container-fluid">
+  <br><br>
+    <h2 style="margin-left:30%">Evaluation Conseil parcours</h2>
+    <br>
+    <div class="container-fluid" style="margin:20px">
+      <h1>Votre référentiel</h1>
+      {% if request.user.is_superuser %}
+      <h4>Bonjour, depuis votre tableau de bord vous pouvez consulter les résultats</h4>
+      <h4>de l'enquête</h4>
+      {% else %}
+          {% if request.user.is_authenticated %}
+          <h4>Bonjour : {{ request.user.username}}</h4>
+          <h6>Id utilisateur : {{ request.user.id}}</h6>
+          <h6>Bienvenue sur votre tableau de bord</h6>      
+    <section class=" text-center text-lg-start">
+      <div class="card  shadow-lg">
+        <div class="fr-grid-row">
+          <div class="fr-col">
+              <div class="col-demo"><img src="{% static 'evaluationapp/media/evaluation_team.jpg' %}" class="img-fluid" althtml="prefecture logo" style="width: 400px"></div>
+          </div>
+          <div class="fr-col">
+              <div class="col-demo" style="margin:40px">
+                <h4>Commencez l'expérience</h4>
+            <a href="{% url 'level1' %}"><button type="button" class="btn btn-primary">Démarrer</button></a>
+           
+              </div>
+          </div>
+      </div>
+    </div>
+    </section>
+          {% endif %}
+          <br>
+    {% endif %}
+          <br><br><br><br>
+      {% endblock %}

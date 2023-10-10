@@ -1,0 +1,80 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+<!-- Section: Design Block -->
+<div class="container-fluid" style="margin-left: 100px; width:1000px">
+  <br><br>
+    <h2 style="margin-left:30%">Evaluation Conseil parcours</h2>
+    <br>
+
+    <section class=" text-center text-lg-start"> 
+          <div class="row g-0 d-flex align-items-center">
+              <h4>Projet, activités, réalisations</h4>
+              <h4>Récapitulatif</h4>
+                <hr style="size:4px">
+                <h6>Selectionnez 5 forces qui vous inspirent et vous représentent le plus, utilisez les pour répondre aux questions suivantes</h6>
+                <br>
+                <audio controls>
+                  <source src="{% static 'evaluationapp/media/lesforces.mp3' %}" type="audio/mpeg">
+                </audio>
+              </br></br>
+                <h4>Consultez les 34 talents pour faire votre choix</h4>
+                <p><a href="{% static 'evaluationapp/media/Définition_ des _talents.pdf' %}">Documentation talents</a></p>
+                <br><br>
+                <div class="shadow-lg p-3 mb-5 bg-white rounded align-items-center" style="width:100%;height:1900px; margin:60px">
+          
+  
+                    <h2>{% if user.is_authenticated %}
+                      {{ user.username }} Choisir 5 talents
+                      {% endif %}</h2>
+                      <form method="post">{% csrf_token %}
+                        <div class="fr-messages-group" id="checkboxes-valid-inline-1-messages" aria-live="polite">
+                            {{ talent_form.as_p }}
+                        </br>
+                          
+                        </div>
+                        <p><input type="submit" value="Enregistrer" class="btn btn-primary" name="bouton01"></p>
+                    </form>
+                    <br>
+
+                    <h4 style="color : blue">{{ text_etape }}</h4>
+                    <h4 style="color : rgb(26, 209, 56)">{{ talents_liste }}</h4>
+                
+                    {% for item in talent_01 %}
+
+                    {{ item.talents_liste }}
+
+                    {% endfor %}
+
+                    <h4>Le talent choisi est :   </h4>
+         
+                  
+
+          
+              <form method="post">{% csrf_token %}
+                <div class="fr-messages-group" id="checkboxes-valid-inline-1-messages" aria-live="polite">
+               
+                  <h6>Un exemple d'utilisation :</h6>
+                  {{ last_form.exemple_utilisation}}
+                  <br>
+                  <h6>Qu'en pensent les autres ?</h6>
+                  {{ last_form.avis_autres}}
+                  <br>
+                  <h6>Dans qu'elle métier pourrait-elle s'exercer ?</h6>
+                  {{ last_form.utilisation_metier }}
+                </div>
+                <br><br>
+                <p><input type="submit" value="Enregistrer" class="btn btn-primary" name="bouton02"></p>
+              </div>
+            </form>
+            </div>
+
+      </section>
+    </div>
+      </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,169 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+<!-- Section: Design Block -->
+<div class="container-fluid" style="margin-left: 100px; width:1000px">
+  <br><br>
+    <h2 style="margin-left:30%">Evaluation Conseil parcours</h2>
+    <br>
+
+    <section class=" text-center text-lg-start"> 
+          <div class="row g-0 d-flex align-items-center">
+                <hr style="size:4px">
+                <h2>Les 8 compétences et leurs paliers</h2>
+                <br>
+                
+                    <h2>{% if user.is_authenticated %}
+                      <h4>{{ user.username }} au vu des projets, activités décrites, choisir les compétences correspondantes
+                      de la liste déroulante</h4>
+                      {% endif %}</h2>
+                      <br>
+                    
+                      <form method="post">{% csrf_token %}
+
+                        Id_Utilisateur:{{ form_comp.created_by }}<br>
+                        <img src="{% static 'evaluationapp/media/personnage01.png' %}" class="img-fluid" althtml="Personnage illustration" style="width: 100px">
+                        <h6>-Interagir à l'oral en contexte professionnel</h6>
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-list-check" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                        </svg>{{ form_comp.C1_Interagir_oral }}<br><br><br><br>
+                
+                        
+                        <ul class="list-group" style="margin-left : 10px">
+                          <li>Palier 1 : Présente et décrit partiellement son parcours et son activitè</li>
+                          <li>Palier 2 : Interagit sur des éléments familiers et les situe dans le temps</li>
+                          <li>Palier 3 : Explique et justifie ses choixs auprès d'interlocuteurs variés</li>
+                          <li>Palier 4 : Adapte sesmanières de dire/ ne pas dire en fonction des situations de communication</li>
+                          <li>Palier 5 : Argumente et facilite l'élaboration de points de vue au sein de collectifs connus</li>
+                          <li>Palier 6 : Varieses manières de communiquer en fonction des publics et de ses enjeux liés à toute situation institutionnelle</li>
+                        </ul>
+                        <br><br>
+                        <img src="{% static 'evaluationapp/media/perso02.png' %}" class="img-fluid" althtml="Personnage illustration" style="width: 100px">
+                        
+                        <h6>-Interagir à l'écrit en contexte professionnel</h6>
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-list-check" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                        </svg>{{ form_comp.C2_Interagir_écrit }}<br><br><br><br>
+
+                          <ul class="list-group" style="margin-left : 10px">
+                            <li>Palier 1 : Identifie les éléments clés d'un écrit informatif très court, écrit quelques mots relatifs à son contexte</li>
+                            <li>Palier 2 : Identifie les informations pertinentes dans des textes simples de son environnement.<br>
+                            Ecrit des textes informatifs relatifs à son contexte</li>
+                            <li>Palier 3 : Utilise la plupart des écrits nécesaires à son activité. Rédige des documents relatifs à son activité et à son contexte</li>
+                            <li>Palier 4 :Traite et produit des textes pour son activité courante à usage interne</li>
+                            <li>Palier 5 : Analyse des écrits techniques, institutionnels, juridiques en vue de reformulation écrites<br>
+                            Rédige des notes et des documents pour autrui</li>
+                            <li>Palier 6 : Gère traite et produit des textes complexes et variés pour soi et pour autrui</li>
+                          </ul>
+                          <br><br>
+                          <h6>-Utiliser les outils numériques</h6>
+                         
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-list-check" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                          </svg>{{ form_comp.C3_Outils_numériques }}<br><br><br><br><br>
+                       
+                          <ul class="list-group" style="margin-left : 10px">
+                            <li>Palier 1 : Réalise des tâches élémentaires avec un outil numérique connu</li>
+                            <li>Palier 2 : Utilise des fonctions de base de quelques outils numériques</li>
+                            <li>Palier 3 : Utilise régulièrement les outils numériques en fonction du contexte et des situations</li>
+                            <li>Palier 4 : Personnalise les ressources numériques au service de son activité ou pour autrui</li>
+                            <li>Palier 5 : Elabore des supports variés et complexes pour son activité et celle de ses partenaires - internes externes</li>
+                            <li>Palier 6 : Produit des contenus multimédias à l'aide de plates-formes, outils et environnements</li>
+                          </ul>
+                          
+                          <br><br>
+                          <h6>-Prendre en compte les usages réglementaires et les usages de l'environnement</h6>
+                          
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-list-check" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                          </svg>{{ form_comp.C4_cadres_et_usages }}<br><br><br><br><br>
+                         
+                          <ul class="list-group" style="margin-left : 10px">
+                            <li>Palier 1 : Identifie les cadres réglementaires liés à son activité</li>
+                            <li>Palier 2 : Applique les procédures et les codes relationnels en usage dans son environnement</li>
+                            <li>Palier 3 : Met en oeuvre les consignes et procédures dans le respect des cadres et des usages</li>
+                            <li>Palier 4 : Asssure et contrôle le respect des cadres et des usages</li>
+                            <li>Palier 5 : Assure le respect des cadres et des usages et en propose d'éventuelles applications</li>
+                            <li>Palier 6 : Adapte si nécessaire les régles de fonctionnement liées aux caches et aux nuages</li>
+                          </ul>
+                          <br><br>
+                          <h6>-Gérer des informations</h6>
+                          
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-list-check" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                          </svg>{{ form_comp.C5_Gérer_informations }}<br><br><br><br><br>
+                         
+                          <ul class="list-group" style="margin-left : 10px">
+                            <li>Palier 1 : Identifie les informations misent à disposition pour son activité</li>
+                            <li>Palier 2 : Vérifie la disponibilité des informations en fonction des objectifs et des circonstances de l'activité</li>
+                            <li>Palier 3 : Sélectionne des informations en fonction des objectifs et des circonstances de l'activité</li>
+                            <li>Palier 4 : Evalue la pertinence de l'information et la diffusion de façon appropriée</li>
+                            <li>Palier 5 : Produit pour autrui de l'information en vue d'aider à la décision</li>
+                            <li>Palier 6 : Interprète des informations pour prendre des décisions</li>
+                          </ul>
+                          
+                          <br><br>
+        
+                            <h6>-Organiser son activité</h6>
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-list-check" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                            </svg>{{ form_comp.C6_Organiser_son_activité }}<br><br><br><br><br>
+
+                            <ul class="list-group" style="margin-left : 10px">
+                              <li>Palier 1 : Identifie les éléments structurant l'organisation de l'activité prévue</li>
+                              <li>Palier 2 : Applique l'organisation prévue pour son activité</li>
+                              <li>Palier 3 : Sélectionne des informations en fonction des objectifs et des circonstances de l'activité</li>
+                              <li>Palier 4 : Evalue la pertinence de l'information et la diffuse de façon appropriée</li>
+                              <li>Palier 5 : Produit pour autrui de l'information en vue d'aider à la décision</li>
+                              <li>Palier 6 : Interprète des informations pour prendre des décisions</li>
+                            </ul>
+                            
+                            <br><br>
+                            <h6>-Agir face aux aléas et aux situations d'urgence</h6>
+                            
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-list-check" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                            </svg>{{ form_comp.C7_Agir_aléas_situations_urgence }}<br><br><br><br><br><br>
+                            
+                            <ul class="list-group" style="margin-left : 10px">
+                              <li>Palier 1 : Identifie un évènement imprévu en situation courante et relaie l'information à sa hiérarchie</li>
+                              <li>Palier 2 : Propose une action adaptée à sa hiérarchie face à un évènement imprévu en situation courante</li>
+                              <li>Palier 3 : Met en oeuvre une action adaptée face à un évènement imprévu en situation courante</li>
+                              <li>Palier 4 : Agit après consultation de sa hiérarchie face à des évènements excetionnels</li>
+                              <li>Palier 5 : Propose des solutions adaptées en situation exceptionnelle</li>
+                              <li>Palier 6 : Tranche sur les solutions proposées pour résoudre des situations exceptionnelles</li>
+                            </ul>
+                          
+
+                            
+                            <br><br>
+                            <h6>-Travailler en équipe</h6>
+                           
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-list-check" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                            </svg>{{ form_comp.C8_Travail_en_équipe }}<br><br><br><br><br><br>
+                            
+                           
+                              <ul class="list-group" style="margin-left : 10px">
+                                <li>Palier 1 : Se conforme aux modes de fonctionnement d'une équipe équipe donnée</li>
+                                <li>Palier 2 : Identifie le rôle des participants et sa position dans le groupe</li>
+                                <li>Palier 3 : Fait des propositions et prend en compte les avis des membres de l'équipe</li>
+                                <li>Palier 4 : Anime le travail collectif, peut varier sa place et son rôle au sein de son équipe</li>
+                                <li>Palier 5 : Met en place un fonctionnement pour développer le travail de son équipe</li>
+                                <li>Palier 6 : Assure la coopération entre équipes et distribue les rôles en fonction des compétences de chacun</li>
+                              </ul>
+                            <br><br>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                          </form>
+      </section>
+    </div>
+      </div>
+</div>
+
+{% endblock %}
