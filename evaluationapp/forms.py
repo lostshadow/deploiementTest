@@ -59,7 +59,7 @@ class Etape_projet(forms.ModelForm):
             "resultats_obtenus" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
             "suivi" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
             "points_forts_acquis" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
-            "traits_personnalité" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
+            "traits_personnalite" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
             "capable_de" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
 
         }
