@@ -62,7 +62,7 @@ class etape_projet(models.Model):
     resultats_obtenus = models.CharField(max_length=1000, default="")
     suivi = models.CharField(max_length=1000, default="")
     points_forts_acquis = models.CharField(max_length=1000, default="")
-    traits_personnalité = models.CharField(max_length=1000, default="")
+    traits_personnalite = models.CharField(max_length=1000, default="")
     capable_de = models.CharField(max_length=1000, default="")
 
 class etape_projet_02(models.Model):
@@ -75,7 +75,7 @@ class etape_projet_02(models.Model):
     resultats_obtenus = models.CharField(max_length=1000, default="")
     suivi = models.CharField(max_length=1000, default="")
     points_forts_acquis = models.CharField(max_length=1000, default="")
-    traits_personnalité = models.CharField(max_length=1000, default="")
+    traits_personnalite = models.CharField(max_length=1000, default="")
     capable_de = models.CharField(max_length=1000, default="")
 
 class etape_forces(models.Model):
@@ -212,13 +212,13 @@ class competences(models.Model):
 
 
     C1_Interagir_oral = models.CharField(max_length=20, choices =  C1_CHOICES, default = palier_1)
-    C2_Interagir_écrit = models.CharField(max_length=20, choices =  C2_CHOICES, default = palier_1)
-    C3_Outils_numériques = models.CharField(max_length=20, choices =  C3_CHOICES, default = palier_1)
+    C2_Interagir_ecrit = models.CharField(max_length=20, choices =  C2_CHOICES, default = palier_1)
+    C3_Outils_numeriques = models.CharField(max_length=20, choices =  C3_CHOICES, default = palier_1)
     C4_cadres_et_usages = models.CharField(max_length=20, choices =  C4_CHOICES, default = palier_1)
-    C5_Gérer_informations = models.CharField(max_length=20, choices =  C5_CHOICES, default = palier_1)
-    C6_Organiser_son_activité = models.CharField(max_length=20, choices =  C6_CHOICES, default = palier_1)
-    C7_Agir_aléas_situations_urgence = models.CharField(max_length=20, choices =  C7_CHOICES, default = palier_1)
-    C8_Travail_en_équipe = models.CharField(max_length=20, choices =  C8_CHOICES, default = palier_1)
+    C5_Gerer_informations = models.CharField(max_length=20, choices =  C5_CHOICES, default = palier_1)
+    C6_Organiser_son_activite = models.CharField(max_length=20, choices =  C6_CHOICES, default = palier_1)
+    C7_Agir_aleas_situations_urgence = models.CharField(max_length=20, choices =  C7_CHOICES, default = palier_1)
+    C8_Travail_en_equipe = models.CharField(max_length=20, choices =  C8_CHOICES, default = palier_1)
     
 
 

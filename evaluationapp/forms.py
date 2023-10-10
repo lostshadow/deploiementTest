@@ -51,7 +51,7 @@ class TalentsChoices(forms.ModelForm):
 class Etape_projet(forms.ModelForm):
     class Meta:
         model = models.etape_projet
-        fields = ["contexte", "le_sujet", "realisation", "resultats_obtenus", "suivi",  "points_forts_acquis", "traits_personnalité", "capable_de"]
+        fields = ["contexte", "le_sujet", "realisation", "resultats_obtenus", "suivi",  "points_forts_acquis", "traits_personnalite", "capable_de"]
         widgets ={
             "contexte" : forms.Textarea( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
             "le_sujet" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
@@ -66,7 +66,7 @@ class Etape_projet(forms.ModelForm):
 class Etape_projet2(forms.ModelForm):
     class Meta:
         model = models.etape_projet_02
-        fields = ["contexte", "le_sujet", "realisation", "resultats_obtenus", "suivi",  "points_forts_acquis", "traits_personnalité", "capable_de"]
+        fields = ["contexte", "le_sujet", "realisation", "resultats_obtenus", "suivi",  "points_forts_acquis", "traits_personnalite", "capable_de"]
         widgets ={
             "contexte" : forms.Textarea( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
             "le_sujet" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
@@ -74,7 +74,7 @@ class Etape_projet2(forms.ModelForm):
             "resultats_obtenus" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
             "suivi" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
             "points_forts_acquis" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
-            "traits_personnalité" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
+            "traits_personnalite" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
             "capable_de" : forms.TextInput( attrs={ 'placeholder': 'Mon texte', 'style': 'width:800px;', 'class': 'fr-input'}),
 
         }
@@ -93,8 +93,8 @@ class Etape_forces(forms.ModelForm):
 class Competences(forms.ModelForm):
     class Meta:
         model = models.competences
-        fields =["C1_Interagir_oral", "C2_Interagir_écrit", "C3_Outils_numériques", "C4_cadres_et_usages",
-                 "C5_Gérer_informations", "C6_Organiser_son_activité", "C7_Agir_aléas_situations_urgence", "created_by", "C8_Travail_en_équipe"]
+        fields =["C1_Interagir_oral", "C2_Interagir_ecrit", "C3_Outils_numeriques", "C4_cadres_et_usages",
+                 "C5_Gerer_informations", "C6_Organiser_son_activite", "C7_Agir_aleas_situations_urgence", "created_by", "C8_Travail_en_equipe"]
         widgets ={
             'created_by': forms.TextInput(attrs={'readonly': 'readonly'}),
         }
