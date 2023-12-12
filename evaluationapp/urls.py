@@ -6,11 +6,9 @@ from evaluationapp import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('dashboard/', views.dashboard, name='dashboard'),
-    path('level1/', views.level1, name='level1'),
-    path('level1_02/', views.level1_02, name='level1_02'),
-    path('level2/', views.level2, name='level2'),
-    path('level3/', views.level3, name='level3'),
-    path('talents/', views.talents, name='talents'),
-    path('resultats/', views.resultats, name='resultats'),
+    path('mine/',views.ManageEvaluationListView.as_view(),name='manage_evaluation_list'),
+    path('create/',views.EvaluationCreateView.as_view(),name='evaluation_create'),
+    path('<pk>/edit/',views.EvaluationUpdateView.as_view(),name='evaluation_edit'),
+    path('<pk>/delete/',views.EvaluationDeleteView.as_view(),name='evaluation_delete'),
+
 ]

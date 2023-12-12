@@ -1,7 +1,1 @@
 Django==3.2.18
-django_currentuser==0.5.3
-django_multiselectfield
-numpy
-pandas
-plotly
-

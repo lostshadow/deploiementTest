@@ -1,178 +1,55 @@
-from unittest import loader
-from django.http import HttpResponse
 from django.shortcuts import render
-import pandas as pd
-import plotly.express as px
-import numpy as np
 
+from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from evaluationapp.models import TalentsModel, competences, etape_forces, etape_projet, etape_projet_02
-from .forms import Competences, Etape_forces, Etape_projet, Etape_projet2, TalentsChoices
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
+from .models import Evaluation
+
     
 def index(request):
-     return render(request, 'home.html')
+     return render(request, 'index.html')
 
 
-@login_required 
-def dashboard(request):
-     return render(request, 'dashboard.html')
+class ManageEvaluationListView(ListView):
+   model = Evaluation
+   template_name = 'evaluations/manage/evaluation/list.html'
+   def get_queryset(self):
+      qs = super().get_queryset()
+      return qs.filter(owner_evalue=self.request.user)
+   
+class OwnerMixin(object):
+ def get_queryset(self):
+   qs = super().get_queryset()
+   return qs.filter(owner_evalue=self.request.user)
+ 
+class OwnerEditMixin(object):
+  def form_valid(self, form):
+    form.instance.owner_evalue = self.request.user
+    return super().form_valid(form)
+  
+class OwnerEvaluationMixin(OwnerMixin, LoginRequiredMixin,PermissionRequiredMixin):
+ model = Evaluation
+ fields = ['subject', 'titre','evalue_nom', 'evalue_prenom', 'evalue_poste', 'evaluateur_nom', 'evaluateur_prenom', 'evaluateur_poste']
+ success_url = reverse_lazy('manage_evaluation_list')
+ 
+class OwnerEvaluationEditMixin(OwnerEvaluationMixin, OwnerEditMixin):
+  template_name = 'evaluations/manage/evaluation/form.html'
+
+class ManageEvaluationListView(OwnerEvaluationMixin, ListView):
+ template_name = 'evaluations/manage/evaluation/list.html'
+ permission_required = 'evaluations.view_evaluation'
 
 
-@login_required 
-def level1(request):
-     if request.method == 'POST':
-          form_etape = Etape_projet(request.POST)
-          if form_etape.is_valid():
-               form_etape.save()
-               result_01 = etape_projet.objects.all().order_by('-id').values()[:1]
-               context={}
-               context['form_etape']= Etape_projet
-               context['talent_form']= TalentsChoices
-               context['last_form']= Etape_forces
-               context['resultats']= result_01
-               
-               return render(request, 'resultats01.html', context)
-          else :
-               return HttpResponse('Les données utilisateur ne sont pas conformes')
-     
-     else:
-          context={}
-          context['form_etape']= Etape_projet
-          return render(request, 'level1.html', context)
-     
-@login_required 
-def level1_02(request):
-     if request.method == 'POST':
-          form_etape_02 = Etape_projet2(request.POST)
-          if form_etape_02.is_valid():
-               form_etape_02.save()
-               result_01 = etape_projet.objects.all().order_by('-id').values()[:1]
-               result_02 = etape_projet_02.objects.all().order_by('-id').values()[:1]
-             
-               context={}
-               context['form_etape_02']= Etape_projet2
-               context['talent_form']= TalentsChoices
-               context['last_form']= Etape_forces
-               context['resultats']= result_01
-               context['resultats_02']= result_02
-               
-               return render(request, 'resultats01_02.html', context)
-          else :
-               return HttpResponse('Les données utilisateur ne sont pas conformes')
-     
-     else:
-          context={}
-          context['form_etape_02']= Etape_projet2
-          return render(request, 'level1_02.html', context)
+class EvaluationCreateView(OwnerEvaluationEditMixin, CreateView):
+  permission_required = 'evaluations.add_evaluation'
 
+class EvaluationUpdateView(OwnerEvaluationEditMixin, UpdateView):
+  permission_required = 'evaluations.change_evaluation'
 
-@login_required 
-def level2(request):
-     if request.method == 'POST':
-          talent_form = TalentsChoices(request.POST)
-          last_form = Etape_forces(request.POST)
-          if request.method == 'POST' and 'bouton01' in request.POST:
-               if  talent_form.is_valid():
-                    talent_form.save()
-                    context={}
-                    context['text_etape'] = "Vous pouvez passer à l'étape suivante"
-                    context['talent_form']= TalentsChoices()
-                    context['last_form']= Etape_forces()
-                    result_talents = TalentsModel.objects.all().order_by('-id').values()[:1]
-                    result_use = result_talents.values_list('talents_liste')
-                   
-                    print(result_use)
-               
-                    context['talent_01']= result_talents
-               return render(request, 'level2.html', context)
-          if request.method == 'POST' and 'bouton02' in request.POST:
-               if  last_form.is_valid():
-                    last_form.save()
-                    result_01 = etape_projet.objects.all().order_by('-id').values()[:1]
-                    result_talents = TalentsModel.objects.all().order_by('-id').values()[:1]
-                    result_last = etape_forces.objects.all().order_by('-id').values()[:1]
-                    list_talents = result_talents.to_dataframe()
-                    context={}
-                    context['talent_form']= TalentsChoices()
-                    context['last_form']= Etape_forces()
-                    context['resultats']= result_01
-                    context['result_last']= result_last
-                    context['result_talents']= result_talents
-                 
-
-               return render(request, 'resultats02.html', context)
-     else:
-          context={}
-          context['talent_form']= TalentsChoices()
-          context['last_form']= Etape_forces()
-          return render(request, 'level2.html', context)
-
-
-
-     
-@login_required 
-def level3(request):
-     if request.method == 'POST':
-          details= Competences(request.POST)
-          if details.is_valid():
-               competences_post = details.save(commit=False)
-               competences_post.save()
-               form_comp = Competences()
-               result_01 = etape_projet.objects.all().values().order_by('-id').values()[:1]
-               result_talents = TalentsModel.objects.all().order_by('-id').values()[:1]
-               result_last = etape_forces.objects.all().order_by('-id').values()[:1]
-               result_competences = competences.objects.all().order_by('-id').values()[:1]
-               context={}
-               context['talent_form']= TalentsChoices()
-               context['last_form']= Etape_forces()
-               context['resultats']= result_01
-               context['result_last']= result_last
-               context['result_talents']= result_talents
-               context['result_competences']= result_competences
-               context['form_comp']= form_comp
-
-               #########chart code ##########
-               df_result=pd.DataFrame(result_competences)
-               df_result = df_result.drop(columns=['id', 'created_by_id'])
-               
-               df_result=df_result.replace(["palier_1", "palier_2", "palier_3", "palier_4", "palier_5", "palier_6", "palier_7", "palier_8"], [1, 2, 3, 4, 5, 6, 7, 8])
-               r=df_result.iloc[0]
-               fig_competences= px.line_polar(df_result,r=r, theta=["C1_Interagir_oral", "C2_Interagir_écrit", "C3_Outils_numériques", "C4_cadres_et_usages",
-                 "C5_Gérer_informations", "C6_Organiser_son_activité", "C7_Agir_aléas_situations_urgence", "C8_Travail_en_équipe"], line_close=True)
-               fig_competences.update_traces(fill='toself')
-               chart_competences= fig_competences.to_html()
-               context['chart_competences']= chart_competences
-     
-               return render(request, 'resultats03.html', context)
-          else :
-               return HttpResponse('Les données utilisateur ne sont pas conformes')
-     
-     else:
-          form_comp = Competences(None)
-          return render(request, 'level3.html', {'form_comp': form_comp})
-     return render(request, 'level3.html')
-
-@login_required 
-def resultats(request):
-      result_01 = etape_projet.objects.all().values()
-      result_talents = TalentsModel.objects.all().values()
-      result_last = etape_forces.objects.all().values()
-      result_competences = competences.objects.all().values()
-      context={}
-      context['resultats']= result_01
-      context['result_talents']= result_talents
-      context['result_last']= result_last
-      context['result_competences']= result_competences
-
-      return render(request, 'resultats02.html', context)
-
-
-@login_required 
-def talents(request):
-     form =TalentsChoices(request.POST)
-     if form.is_valid():
-            form.save()
-     context={}
-     context['form']= TalentsChoices()
-     return render(request, 'talentPage.html', context)
+class EvaluationDeleteView(OwnerEvaluationMixin, DeleteView):
+ template_name = 'evaluations/manage/evaluation/delete.html'
+ permission_required = 'evaluations.delete_evaluation'

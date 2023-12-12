@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Mes Evaluations{% endblock %}
+{% block content %}
+<div class="container-fluid" style="margin-left:100px;margin-top:40px">
+<h1>Mes évaluations</h1>
+ {% for evaluation in object_list %}
+ <div class="shadow-lg p-3 mb-5 bg-white rounded align-items-center" style="width:670px;height:200pxpx; margin:60px">
+
+            <h3>{{ evaluation.titre }}</h3>
+            <h6>Evalué : {{ evaluation.evalue_nom }} {{ evaluation.evalue_prenom }}</h6>
+            <h6>Poste évalué : {{ evaluation.evalue_poste }}</h6>
+            <h6>Evaluateur : {{ evaluation.evaluateur_nom }} {{ evaluation.evaluateur_prenom }}</h6>
+            <p>
+               <a href="{% url 'evaluation_edit' evaluation.id %}">Edit</a>
+               <a href="{% url 'evaluation_delete' evaluation.id %}">Delete</a>
+</div>
+ {% empty %}
+ <p>Il n'y a aucune évaluation</p>
+ {% endfor %}
+ <p>
+    <br><br>
+ <a href="{% url 'evaluation_create' %}" class="fr-btn">Créer une évaluation</a>
+
+ </p>
+ </div>
+ 
+{% endblock %}

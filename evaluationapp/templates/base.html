@@ -14,53 +14,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
      <!-- Integration design de l'état-->
-     <meta name="theme-color" content="#000091"><!-- Défini la couleur de thème du navigateur (Safari/Android) -->
-     <link rel="apple-touch-icon" href="{% static './dist/favicon/apple-touch-icon.png' %}">
-     <link rel="icon" href="{% static './dist/favicon/favicon.svg' %}" type="image/svg+xml">
-     <!-- si favicon.ico peut etre placé à la racine du serveur, retirer la ligne ci-dessous -->
-     <link rel="shortcut icon" href="{% static './dist/favicon/favicon.ico' %}" type="image/x-icon"><!-- 32×32 -->
-     <link rel="manifest" href="{% static './dist/favicon/manifest.webmanifest' %}" crossorigin="use-credentials">
-     <!-- Modifier les chemins relatifs des favicons en fonction de la structure du projet -->
-     <!-- Dans le fichier manifest.webmanifest aussi, modifier les chemins vers les images -->
-     <link href="{% static './dist/core/core.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/accordion/accordion.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/logo/logo.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/badge/badge.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/breadcrumb/breadcrumb.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/alert/alert.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/checkbox/checkbox.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/radio/radio.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/modal/modal.main.css'%}" rel="stylesheet">
-     <link href="{% static './dist/component/navigation/navigation.main.css'%}" rel="stylesheet">
-     <link href="{% static './dist/component/footer/footer.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/input/input.main.css'%}" rel="stylesheet">
-     <link href="{% static './dist/utility/utility.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/translate/translate.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/password/password.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/search/search.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/header/header.main.css' %}" rel="stylesheet">
-     <link href="{% static './dist/core/core.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/button/button.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/connect/connect.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/form/form.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/link/link.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/accordion/accordion.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/logo/logo.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/badge/badge.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/breadcrumb/breadcrumb.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/alert/alert.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/checkbox/checkbox.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/radio/radio.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/modal/modal.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/navigation/navigation.legacy.css'%}" rel="stylesheet">
-     <link href="{% static './dist/component/footer/footer.legacy.css'%}" rel="stylesheet">
-     <link href="{% static './dist/component/input/input.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/utility/utility.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/translate/translate.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/password/password.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/search/search.legacy.css' %}" rel="stylesheet">
-     <link href="{% static './dist/component/header/header.legacy.css' %}" rel="stylesheet">
- 
+
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="{% static './dsfr/dsfr.min.css' %}">
+      <link rel="stylesheet" href="{% static './utility/utility.min.css' %}">
+      <meta name="theme-color" content="#000091">
+      <!-- Défini la couleur de thème du navigateur (Safari/Android) -->
+      <link rel="apple-touch-icon" href="{% static './favicon/apple-touch-icon.png' %}"><!-- 180×180 -->
+      <link rel="icon" href="{% static './favicon/favicon.svg' %}" type="image/svg+xml">
+      <link rel="shortcut icon" href="{% static './favicon.ico' %}" type="image/x-icon"><!-- 32×32 -->
+    
      <script>
        window['dsfr'] = {
          // verbose: true,
@@ -74,133 +37,6 @@
 
 
     <style>
-
-      #card_anim:hover{
-
-        animation: crescendo 2.0s alternate infinite ease-in;
-      }
-
-      @keyframes crescendo {
-        0%   {transform: scale(.8);}
-        100% {transform: scale(1);}
-      }
-
-      .rounded-t-5 {
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-      }
-  
-      @media (min-width: 992px) {
-        .rounded-tr-lg-0 {
-          border-top-right-radius: 0;
-        }
-  
-        .rounded-bl-lg-5 {
-          border-bottom-left-radius: 0.5rem;
-        }
-
-        #top_nav{
-
-background-color:#3cc4fa;
-}
-
-.box {
-background-color: transparent;
-font-family: "Marianne", arial, sans-serif;
-font-size: 18px;
-width: 220px;
-height: 280px;
-border: 1px solid #ffffff;
-perspective: 1000px;
-}
-.box-inner {
-position: relative;
-font-family: "Marianne", arial, sans-serif;
-font-size: 12px;
-width: 100%;
-height: 100%;
-text-align: center;
-transition: transform 1s;
-transform-style: preserve-3d;
-}
-.box:hover .box-inner {
-transform: rotateY(180deg);
-}
-.box-front,
-.box-back {
-font-family: "Marianne", arial, sans-serif;
-font-size: 12px;
-position: absolute;
-margin:4px;
-padding:7px;
-width: 100%;
-height: 100%;
-backface-visibility: hidden;
-}
-.box-front {
-background-color:  #3284b49c;
-font-family: "Marianne", arial, sans-serif;
-font-size: 12px;
-padding:4px;
-color: #ffffff;
-}
-.box-back {
-font-family: "Marianne", arial, sans-serif;
-font-size: 12px;
-padding:4px;
-background-color: #0080a0;
-color: #eeeeee;
-transform: rotateY(180deg);
-}
-
-#button_graphique{
-background-color: rgba(15, 88, 148, 0.63);
-width : 300px;
-margin-left: 40px;
-color:white;
-transition: background-color 2s ease-out 100ms
-
-}
-#button_graphique:hover{
-background-color: rgba(13, 201, 226, 0.603);
-}
-
-code[class*="language-"],
-pre[class*="language-"] {
-white-space: pre-wrap;
-}
-
-.example-controls {
-z-index: 100000;
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1), 0 8px 16px -16px rgba(0, 0, 0, 0.32);
-}
-
-.example-controls>button {
-position: absolute;
-right: 0;
-top: 0;
-}
-
-.example-controls__content {
-padding: 16px;
-background-color: var(--background-elevated-white);
-}
-
-.example-controls .fr-collapse--expanded~[aria-expanded] {
-display: none;
-}
-
-.example-controls .fr-collapse:not(.fr-collapse--expanded)~button:not([aria-expanded]) {
-display: none;
-}
-
-.example-controls [class*="-form-group"] {
-margin-bottom: 0;
-}
 
 .fr-display-button {
 position: fixed;
@@ -216,33 +52,108 @@ right: 2rem;
   display: none;
 }
 }
-
-
+html.is-changing .transition-fade {
+        transition: opacity 0.25s;
+        opacity: 1;
+        transform: translateX(0);
+        transform-origin: left;
       }
+      html.is-animating .transition-fade {
+        opacity: 0;
+        transform : translateX(100%);
+      }
+
+      html.is-leaving .transition-fade{
+        opacity:0;
+      }
+
+
+    
 </style>
 
 </head>
 
 <body>
-  <header>
-    <!-- place navbar here -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-md">
-        <a class="navbar-brand" href="{% url 'dashboard' %}">Votre Plateforme</a>
-      </div>
-    </nav>
+    <div class="container-fluid">
+    <h1 style="margin-left: 60%; margin-top:40px">Evaluation 360°</h1>
+</div>
+
+<!--      code de la page     -->
+
+<header role="banner" class="fr-header">
+<div class="fr-header__body">
+    <div class="fr-container">
+        <div class="fr-header__body-row">
+            <div class="fr-header__brand fr-enlarge-link">
+                <div class="fr-header__brand-top">
+                    <div class="fr-header__logo">
+                        <a href="/" title="Accueil - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+                            <p class="fr-logo">
+                                Préfecture
+                                <br>Normandie
+                                <br>SGAR
+                            </p>
+                        </a>
+                    </div>
+                    <div class="fr-header__navbar">
+                        <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-491" aria-haspopup="menu" id="button-492" title="Menu">
+                            Menu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
-  <main>
+</div>
+<div class="fr-header__menu fr-modal" id="modal-491" aria-labelledby="button-492">
+    <div class="fr-container">
+        <div class="fr-header__menu-links">
+        </div>
+        <nav class="fr-nav" id="collapse-5538" role="navigation" aria-label="Menu principal">
+            <ul class="fr-nav__list">
+                <li class="fr-nav__item">
+                    <li><button class="fr-nav__btn" aria-expanded="false" aria-controls="collapse-5587" aria-current="true">Accueil</button></li>
+                    <a class="fr-nav__link" href="#" target="_self" id="nav-5542">Créer évaluation</a>
+                </li>
+                <li class="fr-nav__item">
+                    <a class="fr-nav__link" href="#" target="_self" id="nav-5542">Gestion utilisateurs</a>
+                </li>
+                <li class="fr-nav__item">
+                    <a class="fr-nav__link" href="#" target="_self">Evaluations</a>
+                </li>
+                <li class="fr-nav__item">
+                    <a class="fr-nav__link" href="#" target="_self">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</header>
+    <main id="swup" class="transition-fade">
     {% block content %}
     {% endblock %}
 
   </main>
+  <script type="module">
+    import Swup from 'https://unpkg.com/swup@4?module';
+    const swup = new Swup();
+  </script>
   <footer>
     <!-- place footer here -->
   </footer>
 
-  <!-- Optional JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/
+  jquery.min.js">
+   </script>
+   <script>
+   $(document).ready(function() {
+   {% block domready %}
+   {% endblock %}
+   });
+  </script>
+    
+    
+  </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -275,3 +186,4 @@ right: 2rem;
 </body>
 
 </html>
+

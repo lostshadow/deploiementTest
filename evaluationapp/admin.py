@@ -1,7 +1,19 @@
 from django.contrib import admin
-from .models import *
+from .models import Thematique, Evaluation, Repondant
 
-admin.site.register(TalentsModel)
-admin.site.register(etape_projet)
-admin.site.register(etape_forces)
-admin.site.register(competences)
+
+@admin.register(Thematique)
+class ThematiqueAdmin(admin.ModelAdmin):
+ list_display = ['titre']
+
+
+class RepondantInline(admin.StackedInline):
+ model = Repondant
+
+
+@admin.register(Evaluation)
+class EvaluationAdmin(admin.ModelAdmin):
+ list_display = ['titre', 'owner_evalue', 'subject']
+ list_filter = ['evalue_nom', 'evalue_prenom']
+ search_fields = ['titre', 'commentaire']
+ inlines = [RepondantInline]
